@@ -1,5 +1,12 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
 <%= @hello %>
-<br><br>
-<%= @coins %>c
+<br/><br/>
+<%# <%=@coins%> 
+    <% for x in @coins['data'] %>
+     <% for coin in @my_coins %>
+         <% if coin == x['symbol'] %>
+             <%= x['name'] %>: <%= x['quote']['USD']['price']%>
+         <% end %>
+     <% end %>
+    <% end %>
