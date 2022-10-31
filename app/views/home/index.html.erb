@@ -8,6 +8,7 @@
          <% if coin == x['symbol'] %>
              <br/><%= x['name'] %>(<%= x['symbol'] %>):<%= x['quote']['USD']['price']%>
              <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%>
+             <br/>Rank: <%= x['cmc_rank']%>
              
          <% end %>
      <% end %>
