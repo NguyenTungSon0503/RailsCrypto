@@ -1,16 +1,14 @@
 <h1>Home#index</h1>
 <p>Find me in app/views/home/index.html.erb</p>
-<%= @hello %>
 <br/><br/>
 <%# <%=@coins%> 
     <% for x in @coins['data'] %>
-     <% for coin in @my_coins %>
-         <% if coin == x['symbol'] %>
-             <br/><%= x['name'] %>(<%= x['symbol'] %>):<%= x['quote']['USD']['price']%>
+     <%# <% for coin in @my_coins %> <%# gioi han coin trong mang my_coins%>
+         <%# <% if coin == x['symbol'] %>  <%# search coin trong mang my_coins%>
+             <%= x['name'] %>(<%= x['symbol'] %>):<%= x['quote']['USD']['price']%>
              <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%>
              <br/>Rank: <%= x['cmc_rank']%>
-             
-         <% end %>
-     <% end %>
+            <br/>        
+         <%# <% end %> 
+     <%# <% end %> 
     <% end %>   
-

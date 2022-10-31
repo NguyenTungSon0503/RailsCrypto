@@ -1,17 +1,18 @@
 <h2>Look Up a single Coin Currency</h2>
 <br/>
-<%= form_tag home_lookup_path, :method => 'POST' do %>
+<%= form_tag home_lookup_path, :method => 'GET' do %>
  <%= text_field_tag 'sym', nil, placeholder:'Enter Crypto Symbol', size: 30 %>
  <%= submit_tag 'Lookup Stock Quote'%>
  <%end%>
 <br/>
-<%= @symbol%>
 
-<%if @symbol %>
-    <% for x in @lookup_coin %>
+<%if @symbol %> 
+    <% for x in @lookup_coin['data'] %>
         <% if @symbol == x['symbol'] %>
             <%= x['name']%>: $<%= x['quote']['USD']['price']%>
-            <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%><br/><br/>
+            <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%>
+            <br/>Rank: <%= x['cmc_rank']%>
+            <br/>
         <%end%>
     <% end %>
-<% end %>
+<% end %> 
