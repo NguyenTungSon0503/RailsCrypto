@@ -8,9 +8,10 @@ class HomeController < ApplicationController
     @coins = JSON.parse(@response)
     @my_coins = ["BTC","ETH","USDT","BNB","ADA"]
   end
-  def about
 
+  def about
   end
+
   def lookup
     require 'net/http'
     require 'json'
@@ -26,4 +27,6 @@ class HomeController < ApplicationController
       @symbol = "Not enter the field"
     end
   end
+
+  
 end

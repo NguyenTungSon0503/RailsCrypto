@@ -75,3 +75,5 @@ end
 gem "chartkick", "~> 4.2"
 
 gem "groupdate", "~> 6.1"
+
+gem 'bootstrap', '~> 5.0.2'

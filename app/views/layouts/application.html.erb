@@ -11,10 +11,7 @@
   </head>
 
   <body>
-  <%= link_to "Home", root_path %>
-  <%= link_to "About Us", home_about_path %>
-  <%= link_to "Look Up", home_lookup_path %>
-
+  <%= render 'home/header'%>
 
     <%= yield %>
   </body>
