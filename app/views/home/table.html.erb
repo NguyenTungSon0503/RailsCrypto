@@ -1,0 +1,22 @@
+<br><br>
+    <% for x in @coins['data'] %>
+        <% for coin in @my_coins %> <%# gioi han coin trong mang my_coins%>
+            <% if coin == x['symbol'] %>  <%# search coin trong mang my_coins%>
+                <table>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Symbol</th>
+                    <th>Price</th>
+                </tr>
+                <tr>
+                    <td><%= x['cmc_rank']%></td>
+                    <td><%= x['name'] %></td>
+                    <td><%= x['symbol'] %></td>
+                    <td><%= x['quote']['USD']['price']%></td>
+                </tr>
+                </table> 
+            <% end %> 
+        <% end %> 
+    <% end %>   
+        
