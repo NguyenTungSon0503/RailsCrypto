@@ -19,10 +19,26 @@
           <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
         </li>
 
+        
+        <% if user_signed_in? %>
+            <li class="nav-item">
+            <%= link_to "Log Out", destroy_user_session_path, method: :delete,class: "nav-link active"%>
+        </li>
         <li class="nav-item">
+            <%= link_to "Edit Profile", edit_user_registration_path,class: "nav-link active"%>
+        </li>
+        <% else %>
+        <li class="nav-item">
+            <%= link_to "Sign Up", new_user_registration_path, class: "nav-link active"%>
+
             <%# <%= link_to "About Us", home_about_path, class:"nav-link" %>
           <%# <a class="nav-link" href="#">Link</a> %>
         </li>
+        <li class="nav-item">
+            <%= link_to "Log In", new_user_session_path, class: "nav-link active"%>
+        </li>
+          <% end %>>
+        
         <%# <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
