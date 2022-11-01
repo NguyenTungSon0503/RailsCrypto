@@ -9,8 +9,6 @@ class HomeController < ApplicationController
     @my_coins = ["BTC","ETH","USDT","BNB","ADA"]
   end
 
-  def about
-  end
 
   def lookup
     require 'net/http'
@@ -35,7 +33,5 @@ class HomeController < ApplicationController
     @coins = JSON.parse(@response)
     @my_coins = ["BTC","ETH","USDT","BNB","ADA"]
   end
-
-
   
 end
