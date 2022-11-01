@@ -9,10 +9,26 @@
 <%if @symbol %> 
     <% for x in @lookup_coin['data'] %>
         <% if @symbol == x['symbol'] %>
-            <%= x['name']%>: $<%= x['quote']['USD']['price']%>
+           <% @a = x['symbol']%>   
+           <% break %>     
+        <% end %>
+        <% if @symbol == ""%>
+        <%="Not enter the field"%>
+            <%break%>
+        <%end%>
+    <% end %>     
+   <%if @a != nil && @a != 0%>
+        <%= x['name']%>: $<%= x['quote']['USD']['price']%>
             <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%>
             <br/>Rank: <%= x['cmc_rank']%>
             <br/>
-        <%end%>
-    <% end %>
+    <%elsif @a==0 && @symbol != "" %>
+    <%= @error%>
+   <%end%> 
+
 <% end %> 
+
+
+
+
+

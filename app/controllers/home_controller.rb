@@ -20,11 +20,10 @@ class HomeController < ApplicationController
     @response = Net::HTTP.get(@uri)
     @lookup_coin = JSON.parse(@response)
     @symbol = params[:sym]
+    @error = "Not found coin"
+    @a = 0
     if @symbol 
       @symbol = @symbol.upcase
-    end
-    if @symbol == ""
-      @symbol = "Not enter the field"
     end
   end
   def table
