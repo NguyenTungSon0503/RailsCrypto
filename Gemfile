@@ -77,3 +77,4 @@ gem "chartkick", "~> 4.2"
 gem "groupdate", "~> 6.1"
 
 gem 'bootstrap', '~> 5.0.2'
+gem 'devise', '~> 4.8', '>= 4.8.1'
