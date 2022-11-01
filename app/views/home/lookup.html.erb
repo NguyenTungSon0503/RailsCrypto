@@ -6,7 +6,18 @@
  <%end%>
 <br/>
 
-<%if @symbol %> 
+<%if @symbol %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Price</th>
+      <th scope="col">Volume</th>
+    </tr>
+  </thead>
+  <tbody> 
     <% for x in @lookup_coin['data'] %>
         <% if @symbol == x['symbol'] %>
            <% @a = x['symbol']%>   
@@ -18,17 +29,17 @@
         <%end%>
     <% end %>     
    <%if @a != nil && @a != 0%>
-        <%= x['name']%>: $<%= x['quote']['USD']['price']%>
-            <br/>volume_24h:<%= x['quote']['USD']['volume_24h']%>
-            <br/>Rank: <%= x['cmc_rank']%>
-            <br/>
+            <tr>
+                <td><%= x['cmc_rank']%></td>
+                <td><%= x['name'] %></td>
+                <td><%= x['symbol'] %></td>
+                <td>$<%= x['quote']['USD']['price']%></td>
+                <td><%= x['quote']['USD']['volume_24h']%></td>
+            </tr>
+     </tbody>
+</table>
     <%elsif @a==0 && @symbol != "" %>
     <%= @error%>
    <%end%> 
-
+   
 <% end %> 
-
-
-
-
-
