@@ -19,11 +19,11 @@
   </thead>
   <tbody> 
     <% for x in @search_coin['data'] %>
-        <% if @final == x['name'] %>
+        <% if @name == x['name'].downcase %>
            <% @a = x['name']%>   
            <% break %>     
         <% end %>
-        <% if @final == ""%>
+        <% if @name == ""%>
         <%="Not enter the field"%>
             <%break%>
         <%end%>
@@ -38,7 +38,7 @@
             </tr>
      </tbody>
 </table>
-    <%elsif @a==0 && @final != "" %>
+    <%elsif @a==0 && @name != "" %>
     <%= @error%>
    <%end%> 
    

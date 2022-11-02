@@ -45,21 +45,8 @@ class HomeController < ApplicationController
     @error = "Not found coin"
     @a = 0
     if @name
-     if @name.count(" ") == 0
-      @final = @name.capitalize()
-     elsif @name.count(" ") == 1
-      array = @name.split
-      first = array[0].capitalize()
-      second = array[1].capitalize()
-      @final = first + " " + second
-     elsif @name.count(" ") == 2
-      array = @name.split
-      first = array[0].capitalize()
-      second = array[1].capitalize()
-      third = array[2].capitalize()
-      @final = first + " " + second + " " + third
-     end
-
+      
     end
   end
 end
+
