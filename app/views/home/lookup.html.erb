@@ -1,12 +1,11 @@
 <h2>Look Up a single Coin Currency</h2>
 <br/>
 <%= form_tag home_lookup_path, :method => 'GET' do %>
- <%= text_field_tag 'sym', nil, placeholder:'Enter Crypto Symbol', size: 30 %>
+ <%= text_field_tag 'name_or_sym', nil, placeholder:'Enter Crypto input', size: 30 %>
  <%= submit_tag 'Lookup Stock Quote'%>
  <%end%>
 <br/>
-<%# seach by symbol %>
-<%if @symbol %>
+<%if @input %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -18,12 +17,22 @@
     </tr>
   </thead>
   <tbody> 
+  <%# search by symbol%>
     <% for x in @lookup_coin['data'] %>
-        <% if @symbol == x['symbol'] %>
+        <% if @input == x['symbol'].downcase %>
            <% @a = x['symbol']%>   
            <% break %>     
         <% end %>
-        <% if @symbol == ""%>
+        <% if @input == ""%>
+        <%="Not enter the field"%>
+            <%break%>
+        <%end%>
+  <%# search by name%>
+        <% if @input == x['name'].downcase %>
+           <% @a = x['name']%>   
+           <% break %>     
+        <% end %>
+        <% if @input == ""%>
         <%="Not enter the field"%>
             <%break%>
         <%end%>
@@ -38,7 +47,7 @@
             </tr>
      </tbody>
 </table>
-    <%elsif @a==0 && @symbol != "" %>
+    <%elsif @a==0 && @input != "" %>
     <%= @error%>
    <%end%> 
    
