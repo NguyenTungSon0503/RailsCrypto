@@ -19,36 +19,34 @@
   <tbody> 
   <%# search by symbol%>
     <% for x in @lookup_coin['data'] %>
-        <% if @input == x['symbol'].downcase %>
-           <% @a = x['symbol']%>   
-           <% break %>     
-        <% end %>
-        <% if @input == ""%>
-        <%="Not enter the field"%>
-            <%break%>
-        <%end%>
-  <%# search by name%>
-        <% if @input == x['name'].downcase %>
-           <% @a = x['name']%>   
-           <% break %>     
-        <% end %>
-        <% if @input == ""%>
-        <%="Not enter the field"%>
-            <%break%>
-        <%end%>
-    <% end %>     
-   <%if @a != nil && @a != 0%>
-            <tr>
+        <% if x['name'].downcase.include?(@input) %>
+           <tr>
                 <td><%= x['cmc_rank']%></td>
                 <td><%= x['name'] %></td>
                 <td><%= x['symbol'] %></td>
                 <td>$<%= x['quote']['USD']['price']%></td>
                 <td><%= x['quote']['USD']['volume_24h']%></td>
-            </tr>
+            </tr>   
+            
+        
+        
+        <% elsif x['symbol'].downcase.include?(@input)  %>
+        <tr>
+                <td><%= x['cmc_rank']%></td>
+                <td><%= x['name'] %></td>
+                <td><%= x['symbol'] %></td>
+                <td>$<%= x['quote']['USD']['price']%></td>
+                <td><%= x['quote']['USD']['volume_24h']%></td>
+            </tr>  
+        <% elsif @input == ""%>
+        <%="Not enter the field"%>
+            <%break%>
+          <%end%>        
+    <% end %>     
+   
      </tbody>
 </table>
-    <%elsif @a==0 && @input != "" %>
-    <%= @error%>
-   <%end%> 
+    
+   
    
 <% end %> 
