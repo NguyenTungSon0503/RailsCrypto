@@ -1,0 +1,45 @@
+<h2>Look Up a single Coin Currency</h2>
+<br/>
+<%= form_tag home_search_path, :method => 'GET' do %>
+ <%= text_field_tag 'name', nil, placeholder:'Enter Crypto Symbol', size: 30 %>
+ <%= submit_tag 'Lookup Stock Quote'%>
+ <%end%>
+<br/>
+<%# search by name %>
+<%if @name %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Price</th>
+      <th scope="col">Volume</th>
+    </tr>
+  </thead>
+  <tbody> 
+    <% for x in @search_coin['data'] %>
+        <% if @final == x['name'] %>
+           <% @a = x['name']%>   
+           <% break %>     
+        <% end %>
+        <% if @final == ""%>
+        <%="Not enter the field"%>
+            <%break%>
+        <%end%>
+    <% end %>     
+   <%if @a != nil && @a != 0%>
+            <tr>
+                <td><%= x['cmc_rank']%></td>
+                <td><%= x['name'] %></td>
+                <td><%= x['symbol'] %></td>
+                <td>$<%= x['quote']['USD']['price']%></td>
+                <td><%= x['quote']['USD']['volume_24h']%></td>
+            </tr>
+     </tbody>
+</table>
+    <%elsif @a==0 && @final != "" %>
+    <%= @error%>
+   <%end%> 
+   
+<% end %> 
