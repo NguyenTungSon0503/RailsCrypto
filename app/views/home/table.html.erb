@@ -16,8 +16,8 @@
                     <td><%= x['cmc_rank']%></td>
                     <td><%= x['name'] %></td>
                     <td><%= x['symbol'] %></td>
-                    <td>$<%= x['quote']['USD']['price']%></td>
-                    <td><%= x['quote']['USD']['volume_24h']%></td>
+                    <td>$<%= x['quote']['USD']['price'].round(2)%></td>  <%#number_to_currency(x['quote']['USD']['price'])%>
+                    <td>$<%= x['quote']['USD']['volume_24h'].round(0)%></td>
             </tr>
             <%# <% end %>  
         <%# <% end %>  

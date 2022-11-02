@@ -1,0 +1,43 @@
+<% profit_loss = 0%>
+<h1>Listing Cryptos</h1>
+<br/>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Current Price</th>   
+      <th>Current Value</th>
+      <th>Total Paid</th> 
+      <th>Profit/Loss</th>  
+      <th>Cost Paid Per</th>
+      <th>Amount owned</th>                    
+    </tr>
+  </thead>
+  <tbody>
+    <% @cryptos.each do |crypto|%>
+      <%if crypto.user_id == current_user.id%>
+        <% if crypto.symbol %>
+          <% crypto.symbol = crypto.symbol.upcase%>
+        <% end %>
+        <tr>
+        <% for x in @lookup_crypto['data'] %>
+         <% if crypto.symbol == x['symbol'] %>  <%# search coin trong mang my_coins%>
+             <td><%= link_to x['name'], crypto %></td> 
+             <td><%= number_to_currency(x['quote']['USD']['price'])%></td>
+             <td>$<%= (x['quote']['USD']['price'].to_d * crypto.amount_owned).round(4) %></td>
+             <td>$<%= crypto.cost_per * crypto.amount_owned%></td>  
+             <td>$<%= (x['quote']['USD']['price'].to_d * crypto.amount_owned) - (crypto.cost_per * crypto.amount_owned)%></td>
+             <% profit_loss += (x['quote']['USD']['price'].to_d * crypto.amount_owned) - (crypto.cost_per * crypto.amount_owned)%>   
+         <% end %> 
+    <% end %>   
+        <td>$<%= crypto.cost_per%></td>
+        <td><%= crypto.amount_owned%></td>
+      </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+</table>
+<br/>
+<strong>Portfolio Profit/Lost:</strong><%= number_to_currency(profit_loss)%>
+<br/><br/>
+<%= link_to 'New Crypto', new_crypto_path, class: "btn btn-default"%>
