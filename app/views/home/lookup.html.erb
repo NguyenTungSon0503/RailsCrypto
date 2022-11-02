@@ -27,9 +27,6 @@
                 <td>$<%= x['quote']['USD']['price']%></td>
                 <td><%= x['quote']['USD']['volume_24h']%></td>
             </tr>   
-            
-        
-        
         <% elsif x['symbol'].downcase.include?(@input)  %>
         <tr>
                 <td><%= x['cmc_rank']%></td>
@@ -43,10 +40,6 @@
             <%break%>
           <%end%>        
     <% end %>     
-   
      </tbody>
 </table>
-    
-   
-   
 <% end %> 
