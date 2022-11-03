@@ -1,11 +1,6 @@
-<h2>Look Up a single Coin Currency</h2>
+<h2>Search result</h2>
 <br/>
-<%= form_tag home_lookup_path, :method => 'GET' do %>
- <%= text_field_tag 'name_or_sym', nil, placeholder:'Enter Crypto input', size: 30 %>
- <%= submit_tag 'Lookup Stock Quote'%>
- <%end%>
-<br/>
-<%if @input %>
+<%if @input != "" %>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -28,18 +23,18 @@
                 <td><%= x['quote']['USD']['volume_24h']%></td>
             </tr>   
         <% elsif x['symbol'].downcase.include?(@input)  %>
-        <tr>
+            <tr>
                 <td><%= x['cmc_rank']%></td>
                 <td><%= x['name'] %></td>
                 <td><%= x['symbol'] %></td>
                 <td>$<%= x['quote']['USD']['price']%></td>
                 <td><%= x['quote']['USD']['volume_24h']%></td>
-            </tr>  
-        <% elsif @input == ""%>
-        <%="Not enter the field"%>
-            <%break%>
-          <%end%>        
+            </tr> 
+        <%end%>               
     <% end %>     
      </tbody>
 </table>
+<% elsif @input == ""%>
+  <%="Not enter the field"%>
 <% end %> 
+

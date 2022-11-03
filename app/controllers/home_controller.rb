@@ -23,6 +23,7 @@ class HomeController < ApplicationController
     if @input 
       @input = @input.downcase
     end
+
   end
   def table #show table 100 rows
     require 'net/http'
