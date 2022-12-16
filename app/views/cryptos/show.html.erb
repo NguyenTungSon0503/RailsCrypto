@@ -1,0 +1,8 @@
+<%= render @crypto %>
+
+<div>
+  <%= link_to "Edit this crypto", edit_crypto_path(@crypto) %> |
+  <%# <%= link_to "Delete", crypto_path(@crypto), method: :delete, data: {confirm: "Are u sure?"}%>
+  <%= link_to "Back to cryptos", cryptos_path %>
+  <%= button_to "Destroy this crypto", @crypto, method: :delete, data: {confirm: "Are u sure?"} %>
+</div>

@@ -13,13 +13,24 @@
             <%= link_to "Search", home_lookup_path, class: "nav-link active"%>
           <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
         </li>
+        
         <li class="nav-item">
             <%= link_to "Table", home_table_path, class: "nav-link active"%>
           <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
         </li>
 
+
         
         <% if user_signed_in? %>
+          <%# <li class="nav-item">
+            <%= link_to "Add New", new_crypto_path, class: "nav-link active"%>
+          <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
+       <%#</li>%> 
+
+          <li class="nav-item">
+            <%= link_to "Portfolio", cryptos_path, class: "nav-link active"%>
+          <%# <a class="nav-link active" aria-current="page" href="#">Home</a> %>
+        </li>
             <li class="nav-item">
             <%= link_to "Log Out", destroy_user_session_path, method: :delete,class: "nav-link active"%>
         </li>
@@ -37,7 +48,6 @@
             <%= link_to "Log In", new_user_session_path, class: "nav-link active"%>
         </li>
           <% end %>>
-        
         <%# <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Dropdown
@@ -56,12 +66,17 @@
 
 
 
-      <%# search_bar %>
-      <%# <form class="d-flex">
+      <%# <% search_bar %>
+      <%# <form class="d-flex,">
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
+        <button class="btn btn-primary" type="submit">Search</button>
       </form> %>
+              <%= form_tag home_lookup_path, :method => 'GET' do %>
+              <%= text_field_tag 'name_or_sym', nil, placeholder:'Enter Crypto input', size: 20 %>
+              <%= submit_tag 'Search'%>
+              <%end%>
 
+        
       
     </div>
   </div>
