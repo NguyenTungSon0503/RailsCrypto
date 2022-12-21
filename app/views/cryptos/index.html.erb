@@ -37,7 +37,10 @@
     <% end %>
   </tbody>
 </table>
-<br/>
-<strong>Portfolio Profit/Lost:</strong><%= number_to_currency(profit_loss)%>
+<br/><div>
+<strong>Portfolio Profit/Lost: </strong><%= number_to_currency(profit_loss)%>
+</div>
 <br/><br/>
-<%= link_to 'New Crypto', new_crypto_path, class: "btn btn-default"%>
+<div>
+<%= button_to 'New Crypto', new_crypto_path, method: :get, class: "btn btn-success"%>
+</div>

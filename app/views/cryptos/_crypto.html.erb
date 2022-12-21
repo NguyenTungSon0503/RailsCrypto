@@ -1,22 +1,24 @@
 <div id="<%= dom_id crypto %>">
-  <p>
-    <strong>Symbol:</strong>
-    <%= crypto.symbol %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= crypto.user_id %>
-  </p>
-
-  <p>
-    <strong>Cost per:</strong>
-    <%= crypto.cost_per %>
-  </p>
-
-  <p>
-    <strong>Amount owned:</strong>
-    <%= crypto.amount_owned %>
-  </p>
-
+<table class="table table-bordered", style="width:50%">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Symbol</th>
+      <th scope="col">Cost_per</th>
+      <th scope="col">Amount_owned</th>
+    </tr>
+  </thead>
+  <tbody>
+            <tr>
+            <% for x in @lookup_crypto['data'] %>
+            <% if crypto.symbol.upcase == x['symbol'] %> 
+                    <td><%=  x['name'] %></td> 
+                    <td><%= crypto.symbol.upcase %></td>
+                    <td><%= crypto.cost_per %></td>
+                    <td><%= crypto.amount_owned%></td>
+                    <% end %> 
+                    <% end %> 
+            </tr>
+  </tbody>
+</table>
 </div>
