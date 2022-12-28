@@ -28,9 +28,11 @@
     <% end %>
   </tbody>
 </table>
-<button onclick="prevPage()" id="btn_prev">Prev</button>
-<button onclick="nextPage()" id="btn_next">Next</button>
-page: <span id="page"></span>
+<div class="row">
+<button onclick="prevPage()" id="btn_prev" class="col btn btn-success">Prev</button>
+<button onclick="nextPage()" id="btn_next" class="col btn btn-success">Next</button>
+</div>
+
 
 
 
@@ -82,8 +84,8 @@ page: <span id="page"></span>
   </container>
 <script>
     var current_page = 1;
-var records_per_page = 10;
-var l = document.getElementById("listingTable").rows.length;
+    var records_per_page = 10;
+    var l = document.getElementById("listingTable").rows.length;
 
 function prevPage() {
 	if (current_page > 1) {
@@ -148,6 +150,7 @@ function numPages() {
 window.onload = function () {
 	changePage(current_page);
 };
+//end pagination function
 
 
 
